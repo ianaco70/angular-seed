@@ -37,6 +37,6 @@ yarn start
 yarn run build
 ```
 
-## Sample Screenshot
+## Application startup
 
 > On application start up you should see 'hello angular!'.
