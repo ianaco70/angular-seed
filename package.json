@@ -6,14 +6,15 @@
   "scripts": {
     "clean": "rm -rf dist",
     "test": "./node_modules/.bin/karma start --singleRun true",
-    "vendorBuild":
-      "./node_modules/.bin/webpack --config ./src/vendor/webpack.config.js",
-    "prebuild": "npm run clean && npm run vendorBuild",
+    "vendorBuild": "./node_modules/.bin/webpack --config ./src/vendor/webpack.config.js",
+    "prebuild": "npm install && npm run clean && npm run vendorBuild",
     "build": "./node_modules/.bin/webpack --env production",
     "prestart": "npm run clean && npm run vendorBuild",
     "start": "./node_modules/.bin/webpack-dev-server --env development"
   },
-  "keywords": ["angular"],
+  "keywords": [
+    "angular"
+  ],
   "author": "jianacone",
   "license": "MIT",
   "dependencies": {
