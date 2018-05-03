@@ -2,7 +2,6 @@ const chalk = require('chalk');
 const path = require('path');
 const webpack = require('webpack');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
 
 const context = path.join(__dirname, '../../');
@@ -22,6 +21,7 @@ const vendor = [
 ];
 
 module.exports = {
+  mode: 'none',
   cache: true,
   performance: {
     hints: false
@@ -36,10 +36,6 @@ module.exports = {
     path: path.resolve(context, 'dist', 'vendor')
   },
   plugins: [
-    new CleanWebpackPlugin([path.resolve(context, 'dist')], {
-      root: context,
-      verbose: true
-    }),
     new webpack.DllPlugin({
       name: '[name]',
       path: path.resolve(context, 'dist', 'vendor', '[name]-manifest.json')
