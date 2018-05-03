@@ -39,6 +39,4 @@ yarn run build
 
 ## Sample Screenshot
 
-> On application start up you should see the below.
-
-<img src="app_screenshot.png" alt="screenshot">
+> On application start up you should see 'hello angular!'.
