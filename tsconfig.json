@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es2016", "dom"],
+    "noEmitHelpers": true,
+    "pretty": true,
+    "sourceMap": true,
+    "strictNullChecks": false,
+    "target": "es5"
+  },
+  "exclude": ["node_modules"],
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "forkChecker": true,
+    "useCache": true
+  },
+  "compileOnSave": true,
+  "buildOnSave": true
+}
