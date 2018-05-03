@@ -1,11 +1,12 @@
+/* utils */
 const chalk = require('chalk');
 const path = require('path');
 const webpack = require('webpack');
-
+/* plugins */
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
-
-const context = path.join(__dirname, '../../');
-
+/* variables */
+const context = path.resolve(__dirname, '../');
+const mode = 'development';
 const vendor = [
   '@angular/common',
   '@angular/compiler',
@@ -17,15 +18,13 @@ const vendor = [
   '@angular/router',
   'core-js',
   'rxjs',
-  'ts-helpers'
+  'ts-helpers',
+  'zone.js'
 ];
 
 module.exports = {
-  mode: 'none',
+  mode: mode,
   cache: true,
-  performance: {
-    hints: false
-  },
   context: context,
   entry: {
     vendor: vendor
@@ -42,7 +41,7 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
     new ProgressBarWebpackPlugin({
-      format: chalk.blue(':bar') + ' [' + chalk.red.bold(':percent') + ']',
+      format: chalk.blue(':bar') + ' [' + chalk.green.bold(':percent') + ']',
       clear: false
     })
   ],
