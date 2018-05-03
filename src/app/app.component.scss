@@ -1,18 +1,3 @@
 .title {
-  animation: 500ms linear slide-in;
-  color: #2a00c3;
-  display: inline-block;
-  font-size: 20px;
-  padding: 10px;
-  text-shadow: 1px 1px #d3d3d3;
-  text-transform: uppercase;
-}
-
-@keyframes slide-in {
-  from {
-    transform: translate(60%, 0);
-  }
-  to {
-    transform: translate(0, 0);
-  }
+  color: #0000ff;
 }

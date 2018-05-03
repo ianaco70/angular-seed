@@ -30,5 +30,6 @@ $RECYCLE.BIN/
 .awcache
 
 # Build Generated
+coverage/*
 dist/*
 vendor/vendor.js
