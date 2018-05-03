@@ -8,13 +8,12 @@
     "clean": "rimraf dist && mkdir dist",
     "prebuild": "npm install && npm run clean",
     "build": "./node_modules/.bin/webpack --env prod",
-    "vendor:build": "./node_modules/.bin/webpack --config ./config/webpack.vendor.js",
-    "prestart": "npm run clean && npm run vendor:build",
+    "vendor:build":
+      "./node_modules/.bin/webpack --config ./config/webpack.vendor.js",
+    "prestart": "npm run clean && npm run vendor:build && npm run test",
     "start": "./node_modules/.bin/webpack-dev-server --env dev"
   },
-  "keywords": [
-    "angular"
-  ],
+  "keywords": ["angular"],
   "author": "jianacone",
   "license": "MIT",
   "dependencies": {
@@ -48,7 +47,10 @@
     "karma-babel-preprocessor": "^7.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.1",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "^0.0.32",
     "karma-typescript": "^3.0.12",
+    "karma-webpack": "^3.0.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.8.3",
     "progress-bar-webpack-plugin": "^1.11.0",

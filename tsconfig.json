@@ -4,6 +4,7 @@
     "experimentalDecorators": true,
     "lib": ["es2016", "es2017", "dom"],
     "noEmitHelpers": true,
+    "importHelpers": true,
     "pretty": true,
     "sourceMap": true,
     "strictNullChecks": false,
