@@ -4,13 +4,13 @@
   "description": "angular application template",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist",
     "test": "./node_modules/.bin/karma start --singleRun true",
-    "vendorBuild": "./node_modules/.bin/webpack --config ./src/vendor/webpack.config.js",
-    "prebuild": "npm install && npm run clean && npm run vendorBuild",
-    "build": "./node_modules/.bin/webpack --env production",
-    "prestart": "npm run clean && npm run vendorBuild",
-    "start": "./node_modules/.bin/webpack-dev-server --env development"
+    "clean": "rimraf dist && mkdir dist",
+    "prebuild": "npm install && npm run clean",
+    "build": "./node_modules/.bin/webpack --env prod",
+    "vendor:build": "./node_modules/.bin/webpack --config ./config/webpack.vendor.js",
+    "prestart": "npm run clean && npm run vendor:build",
+    "start": "./node_modules/.bin/webpack-dev-server --env dev"
   },
   "keywords": [
     "angular"
@@ -54,6 +54,7 @@
     "progress-bar-webpack-plugin": "^1.11.0",
     "raw-loader": "^0.5.1",
     "resolve-url-loader": "^2.3.0",
+    "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
     "typedoc": "^0.11.1",
     "typedoc-webpack-plugin": "^1.1.4",
