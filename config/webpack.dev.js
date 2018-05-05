@@ -1,26 +1,19 @@
-/* core */
-const chalk = require('chalk');
-const glob = require('glob');
+// config
+const commonConfig = require('./webpack.common.js');
+// core
 const path = require('path');
 const server = require('webpack-dev-server');
-const ts = require('awesome-typescript-loader');
 const webpack = require('webpack');
-/* plugin */
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
-/* variables */
+const webpackMerge = require('webpack-merge');
+// plugins
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
+// variables
 const context = path.join(__dirname, '../');
-const mode = 'development';
 
-module.exports = {
-  mode: mode,
-  cache: true,
-  context: path.resolve(context, 'src'),
-  entry: {
-    app: ['reflect-metadata', 'ts-helpers', 'zone.js', './main']
-  },
+module.exports = webpackMerge(commonConfig, {
+  mode: 'development',
   output: {
-    chunkFilename: '[name].chunk',
+    chunkFilename: '[id].chunk.js',
     filename: '[name].js',
     path: path.resolve(context, 'dist'),
     sourceMapFilename: '[name].map'
@@ -42,51 +35,11 @@ module.exports = {
       hash: true
     }
   },
-  module: {
-    rules: [
-      {
-        test: /\.ts$/,
-        use: [
-          {
-            loader: 'awesome-typescript-loader'
-          },
-          {
-            loader: 'angular2-template-loader'
-          }
-        ]
-      },
-      {
-        test: /\.html$/,
-        loader: 'raw-loader'
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'raw-loader'
-          },
-          {
-            loader: 'resolve-url-loader'
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
-  },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(context, 'src', 'index.html'),
+    new AddAssetHtmlWebpackPlugin({
+      filepath: path.join(context, 'dist/vendor/vendor.dll.js'),
       hash: true,
-      inject: 'body'
-    }),
-    new ProgressBarWebpackPlugin({
-      format: chalk.blue(':bar') + ' [' + chalk.green.bold(':percent') + ']',
-      clear: true
+      includeSourcemap: false
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DllReferencePlugin({
@@ -98,13 +51,6 @@ module.exports = {
         'vendor-manifest.json'
       ))
     }),
-    new webpack.NamedModulesPlugin(),
-    new ts.TsConfigPathsPlugin({
-      configFile: path.resolve(context, 'tsconfig.json')
-    })
-  ],
-  resolve: {
-    extensions: ['.ts', '.js'],
-    modules: ['node_modules', context]
-  }
-};
+    new webpack.NamedModulesPlugin()
+  ]
+});

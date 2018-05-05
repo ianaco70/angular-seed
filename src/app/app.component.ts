@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
   template: `
-    <section>
+    <section class="alert alert-primary" role="alert">
       <div class="title">{{title}}</div>
     </section>
   `

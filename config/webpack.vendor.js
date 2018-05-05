@@ -1,38 +1,34 @@
 /* utils */
 const chalk = require('chalk');
+// core
+const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
-/* plugins */
+// plugins
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
-/* variables */
+// variables
 const context = path.resolve(__dirname, '../');
-const mode = 'development';
-const vendor = [
-  '@angular/common',
-  '@angular/compiler',
-  '@angular/core',
-  '@angular/forms',
-  '@angular/http',
-  '@angular/platform-browser',
-  '@angular/platform-browser-dynamic',
-  '@angular/router',
-  'core-js',
-  'rxjs',
-  'ts-helpers',
-  'zone.js'
-];
 
 module.exports = {
-  mode: mode,
+  mode: 'development',
+  bail: true,
   cache: true,
   context: context,
   entry: {
-    vendor: vendor
+    vendor: [path.resolve(context, 'src', 'vendor')]
   },
   output: {
     filename: '[name].dll.js',
     library: '[name]',
     path: path.resolve(context, 'dist', 'vendor')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        loader: 'css-loader'
+      }
+    ]
   },
   plugins: [
     new webpack.DllPlugin({
@@ -46,7 +42,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.css', '.scss'],
     modules: [path.resolve(context, 'node_modules')]
   }
 };
