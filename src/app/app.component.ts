@@ -11,4 +11,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title: string = 'hello angular!';
+
+  constructor() {
+    if (PRODUCTION) {
+      console.log(`environment: production`);
+    } else {
+      console.log(`environment: development`);
+    }
+  }
 }

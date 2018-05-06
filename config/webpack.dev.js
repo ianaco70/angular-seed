@@ -55,6 +55,9 @@ module.exports = webpackMerge(commonConfig, {
         'vendor-manifest.json'
       ))
     }),
+    new webpack.DefinePlugin({
+      PRODUCTION: false
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ]

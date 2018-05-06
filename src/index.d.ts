@@ -1,1 +1,1 @@
-declare let PRODUCTION: boolean;
+declare var PRODUCTION: boolean;

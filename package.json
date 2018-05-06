@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/karma start --singleRun",
     "clean": "rimraf dist",
-    "prebuild": "npm install && npm run clean",
+    "prebuild": "npm install && npm run test && npm run clean",
     "build": "./node_modules/.bin/webpack --env prod",
     "vendor:build":
       "./node_modules/.bin/webpack --config ./config/webpack.vendor.js",
@@ -31,6 +31,7 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
+    "@ngtools/webpack": "^6.0.0",
     "@types/core-js": "^0.9.46",
     "@types/jasmine": "^2.8.6",
     "@types/node": "^9.6.5",

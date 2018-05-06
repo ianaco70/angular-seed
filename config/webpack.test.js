@@ -22,6 +22,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      PRODUCTION: false
+    }),
     new webpack.NamedModulesPlugin(),
     new webpack.SourceMapDevToolPlugin({
       filename: null,

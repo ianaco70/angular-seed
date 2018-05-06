@@ -22,7 +22,7 @@ module.exports = webpackMerge(commonConfig, {
   },
   plugins: [
     new TypedocWebpackPlugin({
-      out: path.join(context, 'docs'),
+      out: path.resolve(context, 'docs'),
       target: 'es6',
       exclude: '**/node_modules/**/*.*',
       experimentalDecorators: true
