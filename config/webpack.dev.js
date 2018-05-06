@@ -10,6 +10,10 @@ const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
 // variables
 const context = path.join(__dirname, '../');
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 module.exports = webpackMerge(commonConfig, {
   mode: 'development',
   output: {
@@ -28,6 +32,7 @@ module.exports = webpackMerge(commonConfig, {
     https: false,
     port: 3000,
     quiet: false,
+    publicPath: '/',
     stats: {
       buildAt: true,
       chunks: true,
@@ -41,7 +46,6 @@ module.exports = webpackMerge(commonConfig, {
       hash: true,
       includeSourcemap: false
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DllReferencePlugin({
       context: process.cwd(),
       manifest: require(path.resolve(
@@ -51,6 +55,7 @@ module.exports = webpackMerge(commonConfig, {
         'vendor-manifest.json'
       ))
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ]
 });

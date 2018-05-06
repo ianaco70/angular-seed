@@ -1,7 +1,9 @@
-/* core */
+// config
+const testConfig = require('./config/webpack.test');
+// core
 const path = require('path');
 const webpack = require('webpack');
-/* variables */
+// variables
 const mode = 'development';
 
 module.exports = config => {
@@ -25,37 +27,7 @@ module.exports = config => {
       '**/*.spec.ts': ['sourcemap', 'webpack']
     },
     reporters: ['spec'],
-    webpack: {
-      mode: mode,
-      context: __dirname,
-      devtool: 'sourcemap',
-      module: {
-        rules: [
-          {
-            test: /\.html$/,
-            loaders: ['raw-loader', 'sass-loader']
-          },
-          {
-            test: /\.scss$/,
-            loaders: ['raw-loader', 'sass-loader']
-          },
-          {
-            test: /\.ts$/,
-            loaders: ['awesome-typescript-loader', 'angular2-template-loader']
-          }
-        ]
-      },
-      plugins: [
-        new webpack.NamedModulesPlugin(),
-        new webpack.SourceMapDevToolPlugin({
-          filename: null,
-          test: /\.(ts|js)($|\?)/i
-        })
-      ],
-      resolve: {
-        extensions: ['.ts', '.js']
-      }
-    },
+    webpack: testConfig,
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

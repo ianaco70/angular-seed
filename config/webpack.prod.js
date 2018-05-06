@@ -26,6 +26,9 @@ module.exports = webpackMerge(commonConfig, {
       target: 'es6',
       exclude: '**/node_modules/**/*.*',
       experimentalDecorators: true
+    }),
+    new webpack.DefinePlugin({
+      PRODUCTION: true
     })
   ]
 });
