@@ -1,6 +1,6 @@
 # Angular Seed
 
-> Angular application template using webpack and npm scripts. Along with Karma and Jasmine setup for testing.
+> Angular application seed using webpack, npm scripts, and bootstrap framework. Along with Karma and Jasmine setup for testing.
 
 ## Setup
 
@@ -24,14 +24,14 @@ yarn install
 ## Run Project
 
 * Development
-  > Runs using webpack's dev server in which all processed files are located in a virtual distribution folder, defaults to http://localhost:3000/
+  > Runs a pre-process for generating a vendor dll bundle. The dev build is then run referencing the vendor bundle and served using webpack's dev server in which processed files are located in a virtual folder. Defaults to http://localhost:3000/
 
 ```
 yarn start
 ```
 
 * Production
-  > Runs a prebuild process which installs required dependencies and runs application tests. The distribution folder is then cleaned before newly processed files are added.
+  > Runs a pre-process which installs required dependencies. The distribution folder is then cleaned before newly processed files are added.
 
 ```
 yarn run build
@@ -40,3 +40,50 @@ yarn run build
 ## Application start-up
 
 > On application start-up you should see 'hello angular!'.
+
+## Webpack Configurations
+
+### Vendor
+
+> Contains configuration for creating a Dynamic-link library (DLL) for third-party dependencies. The vendor bundle is referenced by the development configuration through a generated manifest to allow for faster build times.
+
+### Common
+
+> Contains common configuration setup between development and production configurations.
+
+### Development
+
+> Contains development specific configuration. This includes the following:
+
+* Development server
+* Dynamic-link library (DLL)
+* Hot module replacement (HMR)
+
+### Production
+
+> Contains production specific configuration. This includes the following:
+
+* Generated typedoc
+* Ahead of time compilation (see To-Do below)
+
+### Test
+
+> Contains test specific configuration for use by karma test runner.
+
+## To-Do's
+
+### Development
+
+* Fix HMR issue
+
+### Production
+
+* Add AOT plugin
+* Add split chunks plugins
+
+### General
+
+* Update ploy fill file and integrate into build
+* Add standard e2e test
+* Add linting, minify, uglify
+* Improve global env usage
