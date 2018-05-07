@@ -37,7 +37,7 @@ yarn start
 yarn run build
 ```
 
-## Application start-up
+## Application Start-up
 
 > On application start-up you should see 'hello angular!'.
 
@@ -83,7 +83,7 @@ yarn run build
 
 ### General
 
-* Update ploy fill file and integrate into build
+* Update polyfills file and integrate into build
 * Add standard e2e test
 * Add linting, minify, uglify
 * Improve global env usage
