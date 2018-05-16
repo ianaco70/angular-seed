@@ -74,7 +74,8 @@ yarn run build
 
 ### Development
 
-* Fix HMR issue
+* Fix HMR issue 
+  * Using mini-extract-plugin which does not currently support HMR, this is a known issue https://github.com/webpack-contrib/mini-css-extract-plugin/issues/34
 
 ### Production
 
