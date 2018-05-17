@@ -9,10 +9,7 @@ const webpackMerge = require('webpack-merge');
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
 // variables
 const context = path.join(__dirname, '../');
-
-if (module.hot) {
-  module.hot.accept();
-}
+const env = process.env.NODE_ENV;
 
 module.exports = webpackMerge(commonConfig, {
   mode: 'development',
@@ -56,7 +53,9 @@ module.exports = webpackMerge(commonConfig, {
       ))
     }),
     new webpack.DefinePlugin({
-      PRODUCTION: false
+      'process.env': {
+        ENV: JSON.stringify(env)
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()

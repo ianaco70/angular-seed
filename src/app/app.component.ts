@@ -13,10 +13,10 @@ export class AppComponent {
   public title: string = 'hello angular!';
 
   constructor() {
-    if (PRODUCTION) {
-      console.log(`environment: production`);
+    if (process.env.ENV === 'prod') {
+      console.log(`environment: prod`);
     } else {
-      console.log(`environment: development`);
+      console.log(`environment: dev`);
     }
   }
 }

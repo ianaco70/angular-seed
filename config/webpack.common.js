@@ -3,7 +3,7 @@ const chalk = require('chalk');
 const path = require('path');
 const ts = require('awesome-typescript-loader');
 // plugin
-const autoprefixer = require('autoprefixer');
+const Autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
@@ -12,7 +12,7 @@ const context = path.join(__dirname, '../');
 const postcssConfig = {
   autoprefixer: {
     browsers: ['last 2 versions'],
-    plugins: autoprefixer
+    plugins: Autoprefixer
   },
   sourceMap: true
 };
@@ -22,6 +22,7 @@ module.exports = {
   bail: true,
   context: path.resolve(context, 'src'),
   entry: {
+    pollyfills: './polyfills',
     vendor: './vendor',
     app: ['./main'],
     styles: './styles/main'
@@ -33,6 +34,11 @@ module.exports = {
   module: {
     rules: [
       // typescript
+      {
+        test: /\.ts$/,
+        enforce: 'pre',
+        loader: 'tslint-loader'
+      },
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader']
@@ -80,6 +86,11 @@ module.exports = {
             }
           }
         ]
+      },
+      // assets
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: 'file-loader?name=assets/[name].[hash].[ext]'
       }
     ]
   },
