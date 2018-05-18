@@ -1,5 +1,9 @@
 {
+  "defaultSeverity": "warning",
+  "extends": ["tslint:recommended"],
+  "jsRules": {},
   "rules": {
-    "quotemark": [true, "single"]
-  }
+    "quotemark": ["single"]
+  },
+  "rulesDirectory": []
 }
