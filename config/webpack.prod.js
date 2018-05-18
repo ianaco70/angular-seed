@@ -8,9 +8,9 @@ const webpack = require('webpack');
 const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
 // variables
 const context = path.resolve(__dirname, '../');
+const env = process.env.NODE_ENV;
 
 module.exports = webpackMerge(commonConfig, {
-  mode: 'production',
   performance: {
     hints: false
   },
@@ -28,7 +28,9 @@ module.exports = webpackMerge(commonConfig, {
       experimentalDecorators: true
     }),
     new webpack.DefinePlugin({
-      PRODUCTION: true
+      'process.env': {
+        ENV: JSON.stringify(env)
+      }
     })
   ]
 });

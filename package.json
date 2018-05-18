@@ -4,14 +4,14 @@
   "description": "angular application template",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --singleRun",
-    "clean": "rimraf dist",
-    "prebuild": "npm install && npm run test && npm run clean",
-    "build": "./node_modules/.bin/webpack --env prod",
-    "vendor:build":
-      "./node_modules/.bin/webpack --config ./config/webpack.vendor.js",
-    "prestart": "npm run clean && npm run vendor:build && npm run test",
-    "start": "./node_modules/.bin/webpack-dev-server --env dev"
+    "clean": "rimraf dist docs coverage",
+    "test": "node_modules/.bin/karma start --singleRun",
+    "buildVendor":
+      "node_modules/.bin/webpack --config ./config/webpack.vendor.js",
+    "prebuildProd": "npm install && npm run clean && npm test",
+    "buildProd": "cross-env NODE_ENV=prod node_modules/.bin/webpack",
+    "prebuildDev": "npm run clean && npm run buildVendor && npm test",
+    "buildDev": "cross-env NODE_ENV=dev node_modules/.bin/webpack-dev-server"
   },
   "keywords": ["angular"],
   "author": "jianacone",
@@ -44,7 +44,9 @@
     "bootstrap": "^4.1.1",
     "chalk": "^2.3.2",
     "core-js": "^2.5.6",
+    "cross-env": "^5.1.5",
     "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "jasmine-core": "^3.1.0",
@@ -68,6 +70,9 @@
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
+    "stylelint": "^9.2.1",
+    "tslint": "^5.10.0",
+    "tslint-loader": "^3.6.0",
     "typedoc": "^0.11.1",
     "typedoc-webpack-plugin": "^1.1.4",
     "typescript": "^2.8.1",
