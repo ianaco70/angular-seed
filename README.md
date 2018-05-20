@@ -75,7 +75,8 @@ yarn run build
 ### Development
 
 * Fix HMR issue 
-  * Using mini-css-extract-plugin which does not currently support HMR, this is a known issue https://github.com/webpack-contrib/mini-css-extract-plugin/issues/34
+  * For loaders using mini-css-extract-plugin which does not currently support HMR, this is a known issue https://github.com/webpack-contrib/mini-css-extract-plugin/issues/34
+  * check if compatible with angular scoped styles
 
 ### Production
 
@@ -84,7 +85,6 @@ yarn run build
 
 ### General
 
-* Update polyfills file and integrate into build
 * Add standard e2e test
-* Add linting, minify, uglify
-* Improve global env usage
+* Add minify, uglify
+* Fix issue with test being run before gloabl environment varaible set
