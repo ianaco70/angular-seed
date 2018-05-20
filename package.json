@@ -5,15 +5,19 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist docs coverage",
+    "scsslint": "node_modules/.bin/sass-lint --config .stylelintrc.json --verbose --no-exit",
+    "tslint": "tslint --config tslint.json --project ./",
     "test": "node_modules/.bin/karma start --singleRun",
-    "buildVendor":
-      "node_modules/.bin/webpack --config ./config/webpack.vendor.js",
-    "prebuildProd": "npm install && npm run clean && npm test",
+    "general": "npm run tslint && npm run scsslint && npm test",
+    "buildVendor": "node_modules/.bin/webpack --config ./config/webpack.vendor.js",
+    "prebuildProd": "npm install && npm run clean && npm run general",
     "buildProd": "cross-env NODE_ENV=prod node_modules/.bin/webpack",
-    "prebuildDev": "npm run clean && npm run buildVendor && npm test",
+    "prebuildDev": "npm run clean && npm run buildVendor && npm run general",
     "buildDev": "cross-env NODE_ENV=dev node_modules/.bin/webpack-dev-server"
   },
-  "keywords": ["angular"],
+  "keywords": [
+    "angular"
+  ],
   "author": "jianacone",
   "license": "MIT",
   "dependencies": {
@@ -68,11 +72,9 @@
     "raw-loader": "^0.5.1",
     "resolve-url-loader": "^2.3.0",
     "rimraf": "^2.6.2",
+    "sass-lint": "^1.12.1",
     "sass-loader": "^7.0.1",
-    "style-loader": "^0.21.0",
-    "stylelint": "^9.2.1",
     "tslint": "^5.10.0",
-    "tslint-loader": "^3.6.0",
     "typedoc": "^0.11.1",
     "typedoc-webpack-plugin": "^1.1.4",
     "typescript": "^2.8.1",
