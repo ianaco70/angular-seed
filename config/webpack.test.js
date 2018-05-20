@@ -1,5 +1,6 @@
 // core
 const webpack = require('webpack');
+const env = process.env.NODE_ENV;
 
 module.exports = {
   mode: 'development',
@@ -23,7 +24,9 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      PRODUCTION: false
+      'process.env': {
+        ENV: JSON.stringify(env)
+      }
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.SourceMapDevToolPlugin({
