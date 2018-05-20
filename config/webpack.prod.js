@@ -11,6 +11,7 @@ const context = path.resolve(__dirname, '../');
 const env = process.env.NODE_ENV;
 
 module.exports = webpackMerge(commonConfig, {
+  mode: 'production',
   performance: {
     hints: false
   },
