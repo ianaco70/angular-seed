@@ -16,7 +16,7 @@ TestBed.initTestEnvironment(
   platformBrowserDynamicTesting()
 );
 
-describe('AppComponent Test', () => {
+describe('AppComponent test', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent]
