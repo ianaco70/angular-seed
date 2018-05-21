@@ -1,6 +1,6 @@
 # Angular Seed
 
-> Angular application seed using webpack, npm scripts, and bootstrap framework. Along with Karma/Jasmine setup for unit testing and Protractor e2e testing.
+> Angular application seed using webpack, npm scripts, and bootstrap framework. Along with Karma/Jasmine setup for unit testing and Protractor for e2e testing.
 
 ## Setup
 
