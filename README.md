@@ -1,6 +1,6 @@
 # Angular Seed
 
-> Angular application seed using webpack, npm scripts, and bootstrap framework. Along with Karma and Jasmine setup for testing.
+> Angular application seed using webpack, npm scripts, and bootstrap framework. Along with Karma/Jasmine setup for unit testing and Protractor e2e testing.
 
 ## Setup
 
@@ -85,6 +85,5 @@ yarn run build
 
 ### General
 
-* Add standard e2e test
 * Add minify, uglify
 * Fix issue with test being run before gloabl environment varaible set
