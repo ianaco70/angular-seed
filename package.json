@@ -5,24 +5,20 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist docs coverage",
-    "scsslint":
-      "node_modules/.bin/sass-lint --config .stylelintrc.json --verbose --no-exit",
+    "scsslint": "node_modules/.bin/sass-lint --config .stylelintrc.json --verbose --no-exit",
     "tslint": "tslint --config tslint.json --project ./",
-    "protractor": "node_modules/.bin/protractor protractor.conf.js",
-    "webdriver": "node_modules/.bin/webdriver-manager start &",
-    "tscE2e":
-      "node_modules/.bin/tsc e2e/tests/app.e2e-spec.ts --outDir e2e/build --lib es2016,es2017",
-    "testE2e": "npm run tscE2e && npm run webdriver && npm run protractor",
+    "testE2e": "sh e2e-run.sh",
     "test": "node_modules/.bin/karma start --singleRun",
-    "general": "npm run tslint && npm run scsslint && npm test",
-    "buildVendor":
-      "node_modules/.bin/webpack --config ./config/webpack.vendor.js",
-    "prebuildProd": "npm install && npm run clean && npm run general",
+    "general": "npm-run-all tslint scsslint test",
+    "buildVendor": "node_modules/.bin/webpack --config ./config/webpack.vendor.js",
+    "prebuildProd": "npm install && npm-run-all clean general",
     "buildProd": "cross-env NODE_ENV=prod node_modules/.bin/webpack",
-    "prebuildDev": "npm run clean && npm run buildVendor && npm run general",
+    "prebuildDev": "npm-run-all clean buildVendor general",
     "buildDev": "cross-env NODE_ENV=dev node_modules/.bin/webpack-dev-server"
   },
-  "keywords": ["angular"],
+  "keywords": [
+    "angular"
+  ],
   "author": "jianacone",
   "license": "MIT",
   "dependencies": {
