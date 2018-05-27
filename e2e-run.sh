@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
+set protractor='node_modules/.bin/protractor'
 set tsc='node_modules/.bin/tsc'
 set webdriver='node_modules/.bin/webdriver-manager'
 
 # transpile ts files
-tsc e2e/tests/app.e2e-spec.ts --outDir e2e/build --lib es2016,es2017
+tsc --project e2e/tsconfig.e2e.json
 
 # download the selenium server jar and driver binaries
 webdriver-manager update
@@ -12,7 +13,7 @@ webdriver-manager update
 (webdriver-manager start &)
 
 # run protractor
-node_modules/.bin/protractor protractor.conf.js
+protractor protractor.conf.js
 
 # clean up webdriver-manager
 webdriver-manager shutdown

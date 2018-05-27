@@ -13,25 +13,26 @@ const env = process.env.NODE_ENV;
 module.exports = webpackMerge(commonConfig, {
   mode: 'production',
   performance: {
-    hints: false
+    hints: false,
   },
   output: {
     chunkFilename: '[id].chunk.js',
     filename: '[name].js',
     path: path.resolve(context, 'dist'),
-    sourceMapFilename: '[name].map'
+    publicPath: 'dist',
+    sourceMapFilename: '[name].map',
   },
   plugins: [
     new TypedocWebpackPlugin({
       out: path.resolve(context, 'docs'),
       target: 'es6',
       exclude: '**/node_modules/**/*.*',
-      experimentalDecorators: true
+      experimentalDecorators: true,
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        ENV: JSON.stringify(env)
-      }
-    })
-  ]
+        ENV: JSON.stringify(env),
+      },
+    }),
+  ],
 });
