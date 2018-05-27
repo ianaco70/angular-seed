@@ -2,6 +2,9 @@
   "name": "angular-seed",
   "version": "1.0.1",
   "description": "angular application template",
+  "config": {
+    "webpack": "node_modules/.bin/webpack"
+  },
   "scripts": {
     "postgenerate":
       "cross-var mkdir $pwd/$npm_config_component && cross-var touch $pwd/$npm_config_component/$npm_config_component.component{.html,.scss,.ts}",
@@ -12,14 +15,16 @@
     "tslint": "tslint --config tslint.json --project ./",
     "testE2e": "sh e2e-run.sh",
     "test": "node_modules/.bin/karma start --singleRun",
-    "general": "npm-run-all tslint scsslint test",
+    "general": "npm install && npm-run-all tslint scsslint test",
     "buildVendor":
       "node_modules/.bin/webpack --config ./config/webpack.vendor.js",
     "prebuildProd": "cross-env NODE_ENV=prod npm-run-all clean general",
-    "buildProd": "cross-env NODE_ENV=prod node_modules/.bin/webpack",
+    "buildProd":
+      "cross-env NODE_ENV=prod node_modules/.bin/webpack --config config/webpack.prod.js",
     "prebuildDev":
       "cross-env NODE_ENV=dev npm-run-all clean buildVendor general",
-    "buildDev": "cross-env NODE_ENV=dev node_modules/.bin/webpack-dev-server"
+    "buildDev":
+      "node_modules/.bin/webpack-dev-server --config config/webpack.dev.js"
   },
   "keywords": ["angular"],
   "author": "jianacone",
