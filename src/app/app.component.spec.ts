@@ -1,11 +1,11 @@
+import { Component, DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import {
   BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting
+  platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
-import { Component, DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
-import { By } from '@angular/platform-browser';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 let comp: AppComponent;
@@ -13,13 +13,14 @@ let fixture: ComponentFixture<AppComponent>;
 
 TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
+  platformBrowserDynamicTesting(),
 );
 
 describe('AppComponent test', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent]
+      declarations: [AppComponent],
+      imports: [RouterTestingModule],
     })
       .compileComponents()
       .then(() => {

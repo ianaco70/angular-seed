@@ -10,6 +10,8 @@ import '@angular/http';
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
 import '@angular/router';
+// bootstrap
+import 'bootstrap';
 // corejs
 import 'core-js';
 // rxjs
@@ -18,5 +20,3 @@ import 'rxjs';
 import 'ts-helpers';
 // zonejs
 import 'zone.js';
-// bootstrap
-import 'bootstrap';

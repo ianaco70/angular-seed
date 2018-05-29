@@ -1,12 +1,15 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+
 .alert-primary {
-  background-color: #007bff;
+  background-color: color('blue');
 }
 
 .title {
   animation: 1s slide-in;
-  color: #ffffff;
+  color: color('white');
   font-size: 22px;
-  text-shadow: 1px 1px 1px #000000;
+  text-shadow: 1px 1px 1px $black;
   text-transform: uppercase;
 }
 
@@ -14,6 +17,7 @@
   from {
     transform: translate(150px, 0);
   }
+
   to {
     transform: translate(0, 0);
   }

@@ -34,3 +34,4 @@ coverage/
 build/
 dist/
 docs/
+out-tsc/
