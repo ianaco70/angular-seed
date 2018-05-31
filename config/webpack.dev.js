@@ -3,6 +3,7 @@ const commonConfig = require('./webpack.common.js');
 // core
 const path = require('path');
 const server = require('webpack-dev-server');
+const ts = require('awesome-typescript-loader');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 // plugins
@@ -37,11 +38,23 @@ module.exports = webpackMerge(commonConfig, {
       hash: true
     }
   },
+  module: {
+    rules: [
+      // typescript
+      {
+        test: /\.ts$/,
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+      }
+    ]
+  },
   plugins: [
     new AddAssetHtmlWebpackPlugin({
       filepath: path.join(context, 'dist/vendor/vendor.dll.js'),
       hash: true,
       includeSourcemap: false
+    }),
+    new ts.TsConfigPathsPlugin({
+      configFile: path.resolve(context, 'tsconfig.json')
     }),
     new webpack.DllReferencePlugin({
       context: process.cwd(),

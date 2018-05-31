@@ -6,27 +6,23 @@
     "webpack": "node_modules/.bin/webpack"
   },
   "scripts": {
-    "postgenerate":
-      "cross-var mkdir $pwd/$npm_config_component && cross-var touch $pwd/$npm_config_component/$npm_config_component.component{.html,.scss,.ts}",
+    "postgenerate": "cross-var mkdir $pwd/$npm_config_component && cross-var touch $pwd/$npm_config_component/$npm_config_component.component{.html,.scss,.ts}",
     "generate": "npm set",
     "clean": "rimraf dist docs coverage",
-    "scsslint":
-      "node_modules/.bin/sass-lint --config .stylelintrc.json --verbose --no-exit",
+    "scsslint": "node_modules/.bin/sass-lint --config .stylelintrc.json --verbose --no-exit",
     "tslint": "tslint --config tslint.json --project ./",
     "testE2e": "sh e2e-run.sh",
     "test": "node_modules/.bin/karma start --singleRun",
     "general": "npm install && npm-run-all tslint scsslint test",
-    "buildVendor":
-      "node_modules/.bin/webpack --config ./config/webpack.vendor.js",
+    "buildVendor": "node_modules/.bin/webpack --config ./config/webpack.vendor.js",
     "prebuildProd": "cross-env NODE_ENV=prod npm-run-all clean general",
-    "buildProd":
-      "cross-env NODE_ENV=prod node_modules/.bin/webpack --config config/webpack.prod.js",
-    "prebuildDev":
-      "cross-env NODE_ENV=dev npm-run-all clean buildVendor general",
-    "buildDev":
-      "node_modules/.bin/webpack-dev-server --config config/webpack.dev.js"
+    "buildProd": "cross-env NODE_ENV=prod node_modules/.bin/webpack --config config/webpack.prod.js",
+    "prebuildDev": "cross-env NODE_ENV=dev npm-run-all clean buildVendor general",
+    "buildDev": "node_modules/.bin/webpack-dev-server --config config/webpack.dev.js"
   },
-  "keywords": ["angular"],
+  "keywords": [
+    "angular"
+  ],
   "author": "jianacone",
   "license": "MIT",
   "dependencies": {
@@ -45,6 +41,7 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "^6.0.3",
     "@ngtools/webpack": "^6.0.1",
     "@types/core-js": "^0.9.46",
     "@types/jasmine": "^2.8.7",
@@ -57,7 +54,7 @@
     "babel-preset-env": "^1.7.0",
     "chalk": "^2.3.2",
     "core-js": "^2.5.6",
-    "cross-env": "^5.1.5",
+    "cross-env": "^5.1.6",
     "cross-var": "^1.1.0",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
@@ -91,6 +88,7 @@
     "typedoc-webpack-plugin": "^1.1.4",
     "typescript": "2.7.2",
     "webpack": "^4.8.3",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^2.1.3",
     "webpack-config-utils": "^2.3.0",
     "webpack-dev-server": "^3.1.3",
